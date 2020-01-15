@@ -37,7 +37,7 @@
   <nav class="navbar is-spaced" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class:selected='{segment === undefined}' class="navbar-item" href="/">
-        <img alt="logo" src="images/logo.png" width="28" height="28">
+        <img alt="logo" src="images/logo.svg" width="100" height="28">
       </a>
 
       <button class="button navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="mainNav" on:click={menuToggle}>

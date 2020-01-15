@@ -1,60 +1,81 @@
 <script>
-	export let segment;
+  import { stores } from '@sapper/app';
+  const { session } = stores();
+  
+  export let segment;
+  
+  function menuToggle() {
+    var target = this.dataset.target;
+    var $target = document.getElementById(target);
+    this.classList.toggle('is-active');
+    $target.classList.toggle('is-active');
+  }
 </script>
 
 <style>
 	nav {
-		border-bottom: 1px solid rgba(255,62,0,0.1);
+    border-bottom: 1px solid rgba(255,62,0,0.1);
 		font-weight: 300;
-		padding: 0 1em;
-	}
-
-	ul {
-		margin: 0;
-		padding: 0;
-	}
-
-	/* clearfix */
-	ul::after {
-		content: '';
-		display: block;
-		clear: both;
-	}
-
-	li {
-		display: block;
-		float: left;
-	}
-
-	.selected {
-		position: relative;
-		display: inline-block;
+		/* padding: 0 1em; */
 	}
 
 	.selected::after {
 		position: absolute;
 		content: '';
-		width: calc(100% - 1em);
-		height: 2px;
+		width: calc(100% - 1.5em);
+		height: 1px;
 		background-color: rgb(255,62,0);
 		display: block;
 		bottom: -1px;
-	}
-
-	a {
-		text-decoration: none;
-		padding: 1em 0.5em;
-		display: block;
-	}
+  }
+  
+  .button {
+    border: 0;
+  }
 </style>
+<section id="nav">
+  <nav class="navbar is-spaced" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class:selected='{segment === undefined}' class="navbar-item" href="/">
+        <img alt="logo" src="images/logo.png" width="28" height="28">
+      </a>
 
-<nav>
-	<ul>
-		<li><a class:selected='{segment === undefined}' href='.'>home</a></li>
-		<li><a class:selected='{segment === "about"}' href='about'>about</a></li>
+      <button class="button navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="mainNav" on:click={menuToggle}>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
 
-		<!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
-		     the blog data when we hover over the link or tap it on a touchscreen -->
-		<li><a rel=prefetch class:selected='{segment === "blog"}' href='blog'>blog</a></li>
-	</ul>
-</nav>
+    <div id="mainNav" class="navbar-menu">
+      <div class="navbar-start">
+        <a rel=prefetch class:selected='{segment === "episodes"}' class="navbar-item" href='/episodes'>Episodes</a>
+        <a rel=prefetch class:selected='{segment === "podcasts"}' class="navbar-item" href='/podcasts'>Podcasts</a>
+        <a rel=prefetch class:selected='{segment === "about"}' class="navbar-item" href='/about'>About</a>
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            {#if $session.user}
+              <a class="button is-white" href="/settings">
+                Settings
+              </a>
+              <a class="button is-light" href="/logout">
+                Logout
+              </a>
+            {:else}
+              <a rel=prefetch class="button is-info" href="/register">
+                <strong>Sign up</strong>
+              </a>
+              <a rel=prefetch class="button is-light" href="/login">
+                Log in
+              </a>
+            {/if}
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</section>

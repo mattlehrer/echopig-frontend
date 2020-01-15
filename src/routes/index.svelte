@@ -1,46 +1,24 @@
-<style>
-	h1, figure, p {
-		text-align: center;
-		margin: 0 auto;
-	}
-
-	h1 {
-		font-size: 2.8em;
-		text-transform: uppercase;
-		font-weight: 700;
-		margin: 0 0 0.5em 0;
-	}
-
-	figure {
-		margin: 0 0 1em 0;
-	}
-
-	img {
-		width: 100%;
-		max-width: 400px;
-		margin: 0 0 1em 0;
-	}
-
-	p {
-		margin: 1em auto;
-	}
-
-	@media (min-width: 480px) {
-		h1 {
-			font-size: 4em;
-		}
-	}
-</style>
+<script>
+  import Register from '../components/Register.svelte';
+</script>
 
 <svelte:head>
-	<title>Sapper project template</title>
+  <meta name="description" content="Echopig is the best way to share your favorite podcast episodes.">
+	<title>Echopig</title>
 </svelte:head>
 
-<h1>Great success!</h1>
-
-<figure>
-	<img alt='Borat' src='great-success.png'>
-	<figcaption>HIGH FIVE!</figcaption>
-</figure>
-
-<p><strong>Try editing this file (src/routes/index.svelte) to test live reloading.</strong></p>
+<div class="container">
+  <div class="columns">
+    <div class="column is-half">
+      <h1 class="is-size-1">Echopig</h1>
+      <h2 class="is-size-3">The best way to share your favorite podcast episodes.</h2>
+      <div class="is-size-5">You don't need a new app, you just need a better way to find and share the best episodes.</div>
+    </div>
+    <div class="column"></div>
+    <div id="sign-up-column" class="column is-two-fifths">
+      <div class="block">
+        <Register />
+      </div>
+    </div>
+  </div>
+</div>

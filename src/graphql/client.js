@@ -1,4 +1,3 @@
-import { onError } from 'apollo-link-error';
 import ApolloClient from 'apollo-boost';
 import 'cross-fetch/polyfill';
 

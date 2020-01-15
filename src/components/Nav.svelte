@@ -16,8 +16,12 @@
 	nav {
     border-bottom: 1px solid rgba(255,62,0,0.1);
 		font-weight: 300;
-		/* padding: 0 1em; */
-	}
+		padding-top: 5px;
+  }
+  
+  .navbar-brand {
+    margin-top: -10px;
+  }
 
 	.selected::after {
 		position: absolute;
@@ -37,7 +41,7 @@
   <nav class="navbar is-spaced" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class:selected='{segment === undefined}' class="navbar-item" href="/">
-        <img alt="logo" src="images/logo.svg" width="100" height="28">
+        <img alt="logo" src="images/logo.svg" width="81" height="28">
       </a>
 
       <button class="button navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="mainNav" on:click={menuToggle}>

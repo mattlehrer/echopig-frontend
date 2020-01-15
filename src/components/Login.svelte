@@ -1,41 +1,24 @@
 <script>
-  import * as sapper from '@sapper/app';
-  import { mutate } from 'svelte-apollo';
-  import { client } from '../graphql/client';
-  import { LOGIN } from '../graphql/queries';
+  import { stores, goto } from '@sapper/app';
+  import { post } from '../utils/post';
   import ListErrors from './ListErrors.svelte';
 
-  const { session } = sapper.stores();
-  let errors = null;
+  const { session } = stores();
+
+  let username = '';
+	let password = '';
+	let errors = null;
   
-  export const handleSubmit = async function(event) {
+  export const submit = async function(event) {
     if(!event.target.checkValidity()) {
       return;
     }
     try {
-      const response = await mutate(client, {
-        mutation: LOGIN, 
-        variables: { 
-          loginUser: 
-            {
-              username: event.target.username.value,
-              password: event.target.password.value
-            }
-          },
-      });
-      if (!response.errors) {
-        // Sets the User to true in the Store so we do not have to refresh the page.
-        $session.user = response.data.login.user;
-        return fetch('/auth/login', {
-          method: 'POST',
-          credentials: 'include',
-          body: JSON.stringify(response.data.login.user),
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        }).then(sapper.goto('/settings'));
-      } else {
-        sapper.goto('/login');
+      const response = await post(`/auth/login`, { username, password });
+      errors = response.errors;
+      if (response.username) {
+        $session.user = response;
+        goto('/');
       }
     }
     catch (e) {
@@ -47,12 +30,12 @@
 <ListErrors {errors}/>
 
 <form id="login"
-  on:submit|preventDefault="{handleSubmit}"
+  on:submit|preventDefault="{submit}"
 >
   <div class="field">
     <label class="label">Username</label>
     <div class="control has-icons-left has-icons-right">
-      <input class="input" name="username" type="text" placeholder="Username" required>
+      <input class="input" name="username" type="text" placeholder="Username" required bind:value={username}>
       <span class="icon is-small is-left">
         <i class="fas fa-user"></i>
       </span>
@@ -62,7 +45,7 @@
   <div class="field">
     <label class="label" for="password">Password</label>
     <div class="control has-icons-left has-icons-right">
-      <input class="input" id="password" type="password" name="password" placeholder="Password" required>
+      <input class="input" id="password" type="password" name="password" placeholder="Password" required bind:value={password}>
       <span class="icon is-small is-left">
         <i class="fas fa-lock"></i>
       </span>
@@ -71,7 +54,7 @@
 
   <div class="field">
     <div class="control">
-      <button type="submit" class="button is-link">Login</button>
+      <button type="submit" class="button is-link" disabled='{!username || !password}'>Login</button>
     </div>
   </div>
 </form>

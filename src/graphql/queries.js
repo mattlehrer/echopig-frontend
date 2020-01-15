@@ -15,7 +15,7 @@ export const LOGIN = gql`
   login(user: $loginUser) {
     token
     user {
-      username, email, postTag, saveTag
+      username, email, postTag, saveTag, isVerified
     }
   }
 }
@@ -26,7 +26,7 @@ export const CREATE_USER = gql`
     createUser(
       createUserInput: $createUserInput
     ) {
-      username, email, postTag, saveTag
+      username, email, postTag, saveTag, isVerified
     }
   }
 `;

@@ -1,6 +1,7 @@
 <script>
   let year = new Date().getFullYear();
 </script>
+
 <style>
   .button {
     border: 0;
@@ -19,7 +20,12 @@
 <section id="footer">
   <footer class="footer">
     <div class="content has-text-centered">
-      <span><a class="button is-small is-borderless" href="/terms">TERMS</a> <a class="button is-small is-borderless" href="/privacy">PRIVACY POLICY</a></span>
+      <span>
+        <a class="button is-small is-borderless" href="/terms">TERMS</a>
+        <a class="button is-small is-borderless" href="/privacy">
+          PRIVACY POLICY
+        </a>
+      </span>
       <span id="copyright" class="is-size-6">© {year} Echopig</span>
     </div>
   </footer>

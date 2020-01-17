@@ -9,7 +9,7 @@
 </style>
 
 <svelte:head>
-	<title>Register - Echopig</title>
+  <title>Register - Echopig</title>
 </svelte:head>
 
 <div class="column is-two-thirds">

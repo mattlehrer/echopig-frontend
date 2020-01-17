@@ -5,9 +5,10 @@ export const client = new ApolloClient({
   uri: 'http://localhost:3000/graphql',
 });
 
-export const AuthClient = (token) => new ApolloClient({
-  uri: 'http://localhost:3000/graphql',
-  headers: {
-    authorization: `Bearer ${token}`,
-  }
-});
+export const AuthClient = token =>
+  new ApolloClient({
+    uri: 'http://localhost:3000/graphql',
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });

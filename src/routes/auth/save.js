@@ -8,22 +8,21 @@ export async function post(req, res, next) {
       let shouldRelogin = !!req.body.username || !!req.body.password;
       const client = AuthClient(req.session.token);
       const response = await mutate(client, {
-        mutation: UPDATE_USER, 
+        mutation: UPDATE_USER,
         variables: { updateUserInput: req.body },
       });
       console.log(response);
       if (!response.errors) {
         req.session.user = response.data.updateUser;
         if (shouldRelogin) delete req.session.token;
-        return res.json({user: response.data.updateUser});
+        return res.json({ user: response.data.updateUser });
       } else {
         return res.json(response);
       }
-    }
-    catch (e) {
+    } catch (e) {
       return res.json(e);
     }
-	} else {
-		next();
-	}
+  } else {
+    next();
+  }
 }

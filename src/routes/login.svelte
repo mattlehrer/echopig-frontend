@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-	<title>Login - Echopig</title>
+  <title>Login - Echopig</title>
 </svelte:head>
 
 <div class="content">

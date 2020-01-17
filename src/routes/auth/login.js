@@ -6,14 +6,13 @@ export async function post(req, res, next) {
   if (req.body) {
     try {
       const response = await mutate(client, {
-        mutation: LOGIN, 
-        variables: { 
-          loginUser: 
-            {
-              username: req.body.username,
-              password: req.body.password
-            }
+        mutation: LOGIN,
+        variables: {
+          loginUser: {
+            username: req.body.username,
+            password: req.body.password,
           },
+        },
       });
       console.log(response);
       if (!response.errors) {
@@ -23,11 +22,10 @@ export async function post(req, res, next) {
       } else {
         return res.json(response);
       }
-    }
-    catch (e) {
+    } catch (e) {
       return res.json(e);
     }
-	} else {
-		next();
-	}
+  } else {
+    next();
+  }
 }

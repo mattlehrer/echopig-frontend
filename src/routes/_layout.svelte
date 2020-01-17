@@ -13,24 +13,25 @@
     margin-bottom: -144px;
   }
   main {
-		position: relative;
-		max-width: 56em;
-		background-color: white;
+    position: relative;
+    max-width: 56em;
+    background-color: white;
     padding: 2em;
-		margin: 0 auto;
-		box-sizing: border-box;
+    margin: 0 auto;
+    box-sizing: border-box;
   }
   .push {
     height: 144px;
   }
 </style>
+
 <div class="wrapper">
-  
-  <Nav {segment}/>
+
+  <Nav {segment} />
   <main>
-    <Messages/>
-    <slot></slot>
+    <Messages />
+    <slot />
   </main>
-  <div class="push"></div>
+  <div class="push" />
 </div>
 <Footer />

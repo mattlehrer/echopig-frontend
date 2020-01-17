@@ -7,16 +7,15 @@ export async function post(req, res, next) {
     try {
       const { username, email, password } = req.body;
       const response = await mutate(client, {
-        mutation: CREATE_USER, 
-        variables: { 
-          createUserInput: 
-            {
-              username,
-              email,
-              password
-            }
-          }
-        });
+        mutation: CREATE_USER,
+        variables: {
+          createUserInput: {
+            username,
+            email,
+            password,
+          },
+        },
+      });
       console.log(response);
       if (!response.errors) {
         req.session.user = response.data.createUser;
@@ -24,11 +23,10 @@ export async function post(req, res, next) {
       } else {
         return res.json(response);
       }
-    }
-    catch (e) {
+    } catch (e) {
       return res.json(e);
     }
-	} else {
-		next();
-	}
+  } else {
+    next();
+  }
 }

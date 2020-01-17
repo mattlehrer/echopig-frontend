@@ -23,9 +23,10 @@
   async function delCookieMsg(event) {
     event.target.parentNode.parentNode.removeChild(event.target.parentNode);
     try {
-      await post('/delmsg', {msg: event.target.parentNode.textContent.trim()});
-    }
-    catch (e) {
+      await post('/delmsg', {
+        msg: event.target.parentNode.textContent.trim(),
+      });
+    } catch (e) {
       console.log(e);
     }
   }
@@ -45,21 +46,21 @@
         {#if msg.type === 'info'}
           <li>
             <div class="notification is-info">
-              <button on:click={delCookieMsg} class="delete"></button> 
+              <button on:click={delCookieMsg} class="delete" />
               {msg.message}
             </div>
           </li>
         {:else if msg.type === 'error'}
           <li>
             <div class="notification is-danger">
-              <button on:click={delCookieMsg} class="delete"></button> 
+              <button on:click={delCookieMsg} class="delete" />
               {msg.message}
             </div>
           </li>
         {:else}
           <li>
             <div class="notification is-warning">
-              <button on:click={delCookieMsg} class="delete"></button> 
+              <button on:click={delCookieMsg} class="delete" />
               {msg.message}
             </div>
           </li>
@@ -71,7 +72,7 @@
       {#each $errorMsgs as msg}
         <li>
           <div class="notification is-danger error">
-            <button on:click={del} class="delete"></button> 
+            <button on:click={del} class="delete" />
             {msg}
           </div>
         </li>
@@ -82,7 +83,7 @@
       {#each $successMsgs as msg}
         <li>
           <div class="notification is-success success">
-            <button on:click={del} class="delete"></button> 
+            <button on:click={del} class="delete" />
             {msg}
           </div>
         </li>
@@ -93,12 +94,12 @@
       {#each $infoMsgs as msg}
         <li>
           <div class="notification is-info info">
-            <button on:click={del} class="delete"></button> 
+            <button on:click={del} class="delete" />
             {msg}
           </div>
         </li>
       {/each}
     {/if}
 
-	</ul>
+  </ul>
 {/if}

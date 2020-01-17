@@ -1,4 +1,4 @@
 export function get(req, res) {
-	delete req.session.user;
-	res.redirect('/');
+  delete req.session.user;
+  res.redirect('/');
 }

@@ -11,7 +11,7 @@ export async function post(req, res, next) {
         email: req.body.email,
       };
       const response = await mutate(client, {
-        mutation: RESEND_CONFIRM_EMAIL, 
+        mutation: RESEND_CONFIRM_EMAIL,
         variables,
       });
       console.log(response);
@@ -21,11 +21,10 @@ export async function post(req, res, next) {
       } else {
         return res.json(response);
       }
-    }
-    catch (e) {
+    } catch (e) {
       return res.json(e);
     }
-	} else {
-		next();
-	}
+  } else {
+    next();
+  }
 }

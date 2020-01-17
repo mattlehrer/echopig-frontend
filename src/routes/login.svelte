@@ -6,4 +6,10 @@
 	<title>Login - Echopig</title>
 </svelte:head>
 
-<Login />
+<div class="content">
+  <div class="columns">
+    <div class="column is-half">
+      <Login />
+    </div>
+  </div>
+</div>

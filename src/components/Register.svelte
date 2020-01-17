@@ -17,7 +17,8 @@
       const response = await post(`/auth/register`, { username, email, password });
       errors = response.errors;
       if (response.username) {
-        $session.user = response;
+        const { __typename, ...user } = response;
+        $session.user = user;
         goto('/login');
       } else {
         goto('/register');

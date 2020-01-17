@@ -1,13 +1,13 @@
 <script>
   import { stores, goto } from '@sapper/app';
-  import { post } from '../utils/post';
-  import ListErrors from './ListErrors.svelte';
+  import { post, parseErrors } from '../utils/post';
+  import { errorMsgs } from '../utils/stores'
 
   const { session } = stores();
 
   let username = '';
 	let password = '';
-	let errors = null;
+  let errors = null;
   
   export const submit = async function(event) {
     if(!event.target.checkValidity()) {
@@ -15,19 +15,20 @@
     }
     try {
       const response = await post(`/auth/login`, { username, password });
-      errors = response.errors;
+      if (response.graphQLErrors || response.networkError) {
+        errorMsgs.set([...$errorMsgs, parseErrors(response)]);
+      }
       if (response.username) {
-        $session.user = response;
+        const { __typename, ...user } = response;
+        $session.user = user;
         goto('/');
       }
     }
     catch (e) {
-      errors = e;
+      errorMsgs.set([...$errorMsgs, JSON.stringify(e)]);
     }
   }
 </script>
-
-<ListErrors {errors}/>
 
 <form id="login"
   on:submit|preventDefault="{submit}"

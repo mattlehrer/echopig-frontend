@@ -1,5 +1,6 @@
 <script>
   import Nav from '../components/Nav.svelte';
+  import Messages from '../components/Messages.svelte';
   import Footer from '../components/Footer.svelte';
 
   export let segment;
@@ -26,8 +27,8 @@
 <div class="wrapper">
   
   <Nav {segment}/>
-    
   <main>
+    <Messages/>
     <slot></slot>
   </main>
   <div class="push"></div>

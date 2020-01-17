@@ -27,10 +27,10 @@
 </script>
 
 <style>
-.notification {
-  margin-bottom: 1.5rem;
-  padding: 1rem;
-}
+  .notification {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+  }
 </style>
 
 {#if msgs}

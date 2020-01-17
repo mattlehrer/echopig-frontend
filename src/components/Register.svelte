@@ -1,13 +1,12 @@
 <script>
   import { goto, stores } from '@sapper/app';
-  import { post } from '../utils/post';
-  import ListErrors from './ListErrors.svelte';
+  import { post, parseErrors } from '../utils/post';
+  import { errorMsgs } from '../utils/stores';
 
   const { session } = stores();
   let username = '';
   let email = '';
   let password = '';
-  let errors = null;
 
   async function submit(event) {
     if (!event.target.checkValidity()) {
@@ -19,7 +18,9 @@
         email,
         password,
       });
-      errors = response.errors;
+      if (response.graphQLErrors || response.networkError) {
+        errorMsgs.set([...$errorMsgs, parseErrors(response)]);
+      }
       if (response.username) {
         const { __typename, ...user } = response;
         $session.user = user;
@@ -28,12 +29,10 @@
         goto('/register');
       }
     } catch (e) {
-      errors = e;
+      errorMsgs.set([...$errorMsgs, JSON.stringify(e)]);
     }
   }
 </script>
-
-<ListErrors {errors} />
 
 <div class="buttons">
   <a href="/auth/twitter" class="button is-info is-light is-fullwidth">

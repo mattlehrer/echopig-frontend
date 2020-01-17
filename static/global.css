@@ -41,6 +41,14 @@ code {
 	border-radius: 2px;
 }
 
+.input {
+	background-color: #fdf5ef;
+}
+
+.is-static {
+	background-color: inherit;
+}
+
 @media (min-width: 400px) {
 	body {
 		font-size: 16px;

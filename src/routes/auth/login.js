@@ -25,10 +25,8 @@ export async function post(req, res, next) {
       }
     }
     catch (e) {
-      res.json(e);
+      return res.json(e);
     }
-
-		next();
 	} else {
 		next();
 	}

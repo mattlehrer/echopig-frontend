@@ -28,7 +28,7 @@
 		content: '';
 		width: calc(100% - 1.5em);
 		height: 1px;
-		background-color: rgb(255,62,0);
+		background-color: #349494;
 		display: block;
 		bottom: -1px;
   }

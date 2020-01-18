@@ -58,6 +58,18 @@ export const CREATE_USER = gql`
   }
 `;
 
+export const CREATE_POST = gql`
+  mutation CreatePost($createPostInput: CreatePostInput!) {
+    createPost(createPostInput: $createPostInput) {
+      _id
+      createdAt
+      shareURL
+      comment
+      episode
+    }
+  }
+`;
+
 export const RESEND_CONFIRM_EMAIL = gql`
   mutation ConfirmEmail($email: String!) {
     resendConfirmEmail(email: $email) {
@@ -84,6 +96,92 @@ export const CONFIRM_EMAIL = gql`
       isVerified
       facebook
       twitter
+    }
+  }
+`;
+
+export const TOP_EPISODES = gql`
+  query mostPostedEpisodesInTimeframe {
+    mostPostedEpisodesInTimeframe(maxEpisodes: 50) {
+      _id
+      mp3URL
+      title
+      podcast {
+        _id
+        title
+        genres
+        iTunesID
+        author
+        feedUrl
+        artworkUrl600
+        collectionExplicitness
+      }
+    }
+  }
+`;
+
+export const TOP_EPISODES_IN_GENRE = gql`
+  query mostPostedEpisodesInGenreInTimeframe($genre: String!) {
+    mostPostedEpisodesInGenreInTimeframe(genre: $genre) {
+      _id
+      mp3URL
+      title
+      podcast {
+        _id
+        title
+        iTunesID
+        author
+        feedUrl
+        artworkUrl600
+        collectionExplicitness
+      }
+    }
+  }
+`;
+
+export const TOP_PODCASTS = gql`
+  query mostPostedPodcastsInTimeframe {
+    mostPostedPodcastsInTimeframe {
+      _id
+      title
+      iTunesID
+      genres
+      author
+      feedUrl
+      artworkUrl600
+      collectionExplicitness
+    }
+  }
+`;
+
+export const GET_PODCAST = gql`
+  query podcast($podcast: ObjectId!) {
+    podcast(podcastId: $podcast) {
+      iTunesID
+      author
+      title
+      collectionViewUrl
+      feedUrl
+      collectionExplicitness
+      artworkUrl600
+      genres
+      _id
+    }
+  }
+`;
+
+export const GET_EPISODE = gql`
+  query episode($episode: ObjectId!) {
+    episode(episodeId: $episode) {
+      _id
+      title
+      description
+      image
+      mp3URL
+      releaseDate
+      duration
+      parentalRating
+      podcast
     }
   }
 `;

@@ -86,8 +86,11 @@
         <div class="navbar-item">
           <div class="buttons">
             {#if $session.user}
+              <a class="button is-success is-light" href="/post">
+                Post an Episode
+              </a>
               <a class="button is-white" href="/settings">Settings</a>
-              <a class="button is-light" href="/logout">Logout</a>
+              <a class="button is-white" href="/logout">Logout</a>
             {:else}
               <a rel="prefetch" class="button is-info" href="/register">
                 <strong>Sign up</strong>

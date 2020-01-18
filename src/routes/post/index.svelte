@@ -22,6 +22,7 @@
           `'${response.data.episode.title}' from ${response.data.episode.podcast.title} posted.`,
         ]);
         shareURL = '';
+        comment = '';
       }
     } catch (e) {
       errorMsgs.set([...$errorMsgs, JSON.stringify(e)]);

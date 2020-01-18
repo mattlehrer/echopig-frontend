@@ -7,7 +7,6 @@
 
   let username = '';
   let password = '';
-  let errors = null;
 
   export const submit = async function(event) {
     if (!event.target.checkValidity()) {
@@ -17,8 +16,7 @@
       const response = await post(`/auth/login`, { username, password });
       if (response.graphQLErrors || response.networkError) {
         errorMsgs.set([...$errorMsgs, parseErrors(response)]);
-      }
-      if (response.username) {
+      } else {
         const { __typename, ...user } = response;
         $session.user = user;
         goto('/');

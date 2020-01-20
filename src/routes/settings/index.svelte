@@ -75,6 +75,12 @@
   }
 </script>
 
+<style>
+  .content {
+    padding: 0 0.75rem;
+  }
+</style>
+
 <svelte:head>
   <title>Settings - Echopig</title>
 </svelte:head>

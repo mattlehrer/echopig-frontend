@@ -34,7 +34,7 @@
 
 <style>
   .notification {
-    margin-bottom: 1.5rem;
+    margin: 0 0.75rem 1.5rem;
     padding: 1rem;
   }
 </style>

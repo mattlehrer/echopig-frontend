@@ -1,14 +1,14 @@
 import { gql } from 'apollo-boost';
 
-export const GET_PODCASTS = gql`
-  {
-    podcasts {
-      _id
-      title
-      genres
-    }
-  }
-`;
+// export const GET_PODCASTS = gql`
+//   {
+//     podcasts {
+//       _id
+//       title
+//       genres
+//     }
+//   }
+// `;
 
 export const LOGIN = gql`
   mutation login($loginUser: LoginUserInput!) {
@@ -101,21 +101,14 @@ export const CONFIRM_EMAIL = gql`
 `;
 
 export const TOP_EPISODES = gql`
-  query mostPostedEpisodesInTimeframe {
-    mostPostedEpisodesInTimeframe(maxEpisodes: 50) {
+  query mostPostedEpisodesInTimeframe($maxEpisodes: Int) {
+    mostPostedEpisodesInTimeframe(maxEpisodes: $maxEpisodes) {
       _id
-      mp3URL
       title
-      podcast {
-        _id
-        title
-        genres
-        iTunesID
-        author
-        feedUrl
-        artworkUrl600
-        collectionExplicitness
-      }
+      image
+      podcast
+      releaseDate
+      posts
     }
   }
 `;
@@ -126,35 +119,29 @@ export const TOP_EPISODES_IN_GENRE = gql`
       _id
       mp3URL
       title
-      podcast {
-        _id
-        title
-        iTunesID
-        author
-        feedUrl
-        artworkUrl600
-        collectionExplicitness
-      }
+      podcast
     }
   }
 `;
 
 export const TOP_PODCASTS = gql`
-  query mostPostedPodcastsInTimeframe {
-    mostPostedPodcastsInTimeframe {
+  query mostPostedPodcastsInTimeframe($maxPodcasts: Int) {
+    mostPostedPodcastsInTimeframe(maxPodcasts: $maxPodcasts) {
       _id
       title
       iTunesID
       genres
       author
       feedUrl
+      artworkUrl100
       artworkUrl600
+      posts
       collectionExplicitness
     }
   }
 `;
 
-export const GET_PODCAST = gql`
+export const GET_PODCAST_BY_ID = gql`
   query podcast($podcast: ObjectId!) {
     podcast(podcastId: $podcast) {
       iTunesID

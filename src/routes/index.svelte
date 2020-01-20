@@ -1,8 +1,59 @@
-<script>
-  import Register from '../components/Register.svelte';
-  import { stores } from '@sapper/app';
-  const { session } = stores();
+<script context="module">
+  import { client } from '../graphql/client';
+  import { TOP_EPISODES, TOP_PODCASTS } from '../graphql/queries';
+
+  export async function preload() {
+    return {
+      podcastsCache: await client.query({
+        query: TOP_PODCASTS,
+        variables: {
+          maxPodcasts: 3,
+        },
+      }),
+      episodesCache: await client.query({
+        query: TOP_EPISODES,
+        variables: {
+          maxEpisodes: 3,
+        },
+      }),
+    };
+  }
 </script>
+
+<script>
+  import { subscribe, restore } from 'svelte-apollo';
+  import { stores } from '@sapper/app';
+  import { fade } from 'svelte/transition';
+  import Spinner from '../components/Spinner.svelte';
+  import PodcastCard from '../components/PodcastCard.svelte';
+  import EpisodeCard from '../components/EpisodeCard.svelte';
+  import Register from '../components/Register.svelte';
+
+  const { session } = stores();
+  export let podcastsCache, episodesCache;
+
+  restore(client, TOP_PODCASTS, podcastsCache.data);
+  restore(client, TOP_EPISODES, episodesCache.data);
+
+  const getPodcasts = subscribe(client, {
+    query: TOP_PODCASTS,
+    variables: {
+      maxPodcasts: 3,
+    },
+  });
+  const getEpisodes = subscribe(client, {
+    query: TOP_EPISODES,
+    variables: {
+      maxEpisodes: 3,
+    },
+  });
+</script>
+
+<style>
+h2 {
+  padding-left: 0.75rem;
+}
+</style>
 
 <svelte:head>
   <meta
@@ -35,6 +86,40 @@
 {/if}
 
 <div class="container">
-  <h2>Hot Episodes</h2>
-  <h2>Hot Podcasts</h2>
+  <a href='/episodes'>
+    <h2 class="is-size-2">Hot Episodes</h2>
+  </a>
+  {#await $getEpisodes}
+    <Spinner />
+  {:then result}
+    <div in:fade class="episodes">
+      {#each result.data.mostPostedEpisodesInTimeframe as { __typename, ...episode }, i}
+        <div class="episode is-4 column">
+          <EpisodeCard {...episode} />
+        </div>
+      {/each}
+    </div>
+  {:catch error}
+    <p style="color: red">{error.message}</p>
+  {/await}
+
+  <div class="block"></div>
+
+  <a href='/podcasts'>
+    <h2 class="is-size-2">Hot Podcasts</h2>
+  </a>
+  {#await $getPodcasts}
+    <Spinner />
+  {:then result}
+    <div in:fade class="podcasts">
+      {#each result.data.mostPostedPodcastsInTimeframe as { __typename, collectionExplicitness, artworkUrl100, feedUrl, ...podcast }, i}
+        <div class="podcast is-4 column">
+          <PodcastCard {...podcast} />
+        </div>
+      {/each}
+    </div>
+  {:catch error}
+    <p style="color: red">{error.message}</p>
+  {/await}
+
 </div>

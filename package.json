@@ -21,7 +21,7 @@
     "express-session": "^1.17.0",
     "graphql": "^14.5.8",
     "helmet": "^3.21.2",
-    "mongoose": "^5.8.7",
+    "mongoose": "^5.8.9",
     "polka": "^1.0.0-next.11",
     "sirv": "^0.4.0",
     "svelte-apollo": "^0.3.0",

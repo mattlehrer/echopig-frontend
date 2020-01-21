@@ -39,9 +39,9 @@
 {#await $getPodcasts}
   <Spinner />
 {:then result}
-  <div in:fade class="podcasts">
+  <div class="podcasts">
     {#each result.data.mostPostedPodcastsInTimeframe as { __typename, collectionExplicitness, artworkUrl100, feedUrl, ...podcast }, i}
-      <div class="podcast is-4 column">
+      <div in:fade|local class="podcast is-4 column">
         <PodcastCard {...podcast} />
       </div>
     {/each}

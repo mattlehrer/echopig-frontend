@@ -17,7 +17,7 @@
     flex: 1 1 auto;
   }
 
-  .podfooter {
+  .epfooter {
     display: flex;
     align-items: flex-end;
     flex-direction: row;
@@ -39,7 +39,8 @@
 <div class="card">
   <div class="card-image">
     <figure class="image is-square">
-      <a rel="prefetch" href="/e/{_id}">
+      <a href="/e/{_id}">
+        <!-- <a rel="prefetch" href="/e/{_id}"> -->
         <img src={image ? image : podcast.artworkUrl600} alt="{title} Logo" />
       </a>
     </figure>
@@ -60,7 +61,7 @@
       </div>
     </div>
   </div>
-  <div class="podfooter">
+  <div class="epfooter">
     {#if releaseDate}
       <div class="releaseDate tag is-white">
         {new Date(releaseDate).toDateString()}

@@ -19,7 +19,7 @@
       } else {
         successMsgs.set([
           ...$successMsgs,
-          `'${response.data.episode.title}' from ${response.data.episode.podcast.title} posted.`,
+          `'You posted ${response.data.episode.title}' from ${response.data.episode.podcast.title}.`,
         ]);
         shareURL = '';
         comment = '';
@@ -29,6 +29,12 @@
     }
   };
 </script>
+
+<style>
+  form {
+    padding: 0 0.75rem;
+  }
+</style>
 
 <svelte:head>
   <title>Post an Episode - Echopig</title>

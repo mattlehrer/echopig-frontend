@@ -50,9 +50,9 @@
 </script>
 
 <style>
-h2 {
-  padding-left: 0.75rem;
-}
+  h2 {
+    padding-left: 0.75rem;
+  }
 </style>
 
 <svelte:head>
@@ -86,15 +86,15 @@ h2 {
 {/if}
 
 <div class="container">
-  <a href='/episodes'>
+  <a href="/episodes">
     <h2 class="is-size-2">Hot Episodes</h2>
   </a>
   {#await $getEpisodes}
     <Spinner />
   {:then result}
-    <div in:fade class="episodes">
+    <div class="episodes">
       {#each result.data.mostPostedEpisodesInTimeframe as { __typename, ...episode }, i}
-        <div class="episode is-4 column">
+        <div in:fade|local class="episode is-4 column">
           <EpisodeCard {...episode} />
         </div>
       {/each}
@@ -103,17 +103,17 @@ h2 {
     <p style="color: red">{error.message}</p>
   {/await}
 
-  <div class="block"></div>
+  <div class="block" />
 
-  <a href='/podcasts'>
+  <a href="/podcasts">
     <h2 class="is-size-2">Hot Podcasts</h2>
   </a>
   {#await $getPodcasts}
     <Spinner />
   {:then result}
-    <div in:fade class="podcasts">
+    <div class="podcasts">
       {#each result.data.mostPostedPodcastsInTimeframe as { __typename, collectionExplicitness, artworkUrl100, feedUrl, ...podcast }, i}
-        <div class="podcast is-4 column">
+        <div in:fade|local class="podcast is-4 column">
           <PodcastCard {...podcast} />
         </div>
       {/each}

@@ -35,6 +35,7 @@
 
   .button {
     border: 0;
+    color: #4a4a4a;
   }
 </style>
 
@@ -62,44 +63,39 @@
         <a
           rel="prefetch"
           class:selected={segment === 'episodes'}
-          class="navbar-item"
+          class="navbar-item button"
           href="/episodes">
           Episodes
         </a>
         <a
           rel="prefetch"
           class:selected={segment === 'podcasts'}
-          class="navbar-item"
+          class="navbar-item button"
           href="/podcasts">
           Podcasts
         </a>
         <a
           rel="prefetch"
           class:selected={segment === 'about'}
-          class="navbar-item"
+          class="navbar-item button"
           href="/about">
           About
         </a>
       </div>
 
       <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            {#if $session.user}
-              <a class="button is-success is-light" href="/post">
-                Post an Episode
-              </a>
-              <a class="button is-white" href="/settings">Settings</a>
-              <a class="button is-white" href="/logout">Logout</a>
-            {:else}
-              <a rel="prefetch" class="button is-info" href="/register">
-                <strong>Sign up</strong>
-              </a>
-              <a rel="prefetch" class="button is-light" href="/login">Log in</a>
-            {/if}
-
-          </div>
-        </div>
+        {#if $session.user}
+          <a class="navbar-item button is-success is-light" href="/post">
+            Post an Episode
+          </a>
+          <a class="navbar-item button is-white" href="/settings">Settings</a>
+          <a class="navbar-item button is-white" href="/logout">Logout</a>
+        {:else}
+          <a rel="prefetch" class="navbar-item button is-info" href="/register">
+            <strong>Sign up</strong>
+          </a>
+          <a rel="prefetch" class="navbar-item button is-light" href="/login">Log in</a>
+        {/if}
       </div>
     </div>
   </nav>

@@ -28,6 +28,23 @@ export const LOGIN = gql`
   }
 `;
 
+export const GET_USER = gql`
+  query user($username: String!) {
+    user(username: $username) {
+      username
+      name
+      avatar
+      posts {
+          _id
+          episode
+          comment
+          updatedAt
+      }
+      createdAt
+    }
+  }
+`;
+
 export const UPDATE_USER = gql`
   mutation UpdateUser($updateUserInput: UpdateUserInput!) {
     updateUser(fieldsToUpdate: $updateUserInput) {
@@ -67,6 +84,12 @@ export const CREATE_POST = gql`
       comment
       episode
     }
+  }
+`;
+
+export const DELETE_POST = gql`
+  mutation DeletePost($postId: ObjectId!) {
+    deletePost(postId: $postId)
   }
 `;
 
@@ -142,8 +165,8 @@ export const TOP_PODCASTS = gql`
 `;
 
 export const GET_PODCAST_BY_ID = gql`
-  query podcast($podcast: ObjectId!) {
-    podcast(podcastId: $podcast) {
+  query podcastById($podcast: ObjectId!) {
+    podcastById(podcastId: $podcast) {
       iTunesID
       author
       title
@@ -153,6 +176,38 @@ export const GET_PODCAST_BY_ID = gql`
       artworkUrl600
       genres
       _id
+      episodes {
+        _id
+        title
+        description
+        image
+        mp3URL
+        releaseDate
+      }
+    }
+  }
+`;
+
+export const GET_PODCAST = gql`
+  query podcast($iTunesId: Int!) {
+    podcast(iTunesId: $iTunesId) {
+      iTunesID
+      author
+      title
+      collectionViewUrl
+      feedUrl
+      collectionExplicitness
+      artworkUrl600
+      genres
+      _id
+      episodes {
+        _id
+        title
+        description
+        image
+        mp3URL
+        releaseDate
+      }
     }
   }
 `;

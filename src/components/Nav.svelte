@@ -88,6 +88,7 @@
           <a class="navbar-item button is-success is-light" href="/post">
             Post an Episode
           </a>
+          <a class="navbar-item button is-white" href="/u/{$session.user.username}">Profile</a>
           <a class="navbar-item button is-white" href="/settings">Settings</a>
           <a class="navbar-item button is-white" href="/logout">Logout</a>
         {:else}

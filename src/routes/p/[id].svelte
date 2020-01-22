@@ -9,13 +9,6 @@
           podcast: page.params.id,
         },
       });
-    cache.data.podcastById.episodes = cache.data.podcastById.episodes.map(e => {
-      e.published = e.releaseDate ? new Date(e.releaseDate).toLocaleDateString('en-us', {
-          dateStyle: 'long',
-        }) : undefined;
-      e.podcast = cache.data.podcastById;
-      return e;
-    });
     return {
       id: page.params.id,
       cache,

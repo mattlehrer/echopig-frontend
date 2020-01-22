@@ -1,6 +1,6 @@
 <script>
   // create a new query to lookup number of posts ref-ing this episode _id
-
+  import moment from 'moment';
   export let _id, title, releaseDate, description;
 </script>
 
@@ -32,7 +32,7 @@
       <h2 class="is-size-4"><a href='/e/{_id}'>{title}</a></h2>
       {#if releaseDate}
         <h3 class="is-size-6 has-text-weight-light">
-          Published {new Date(releaseDate).toLocaleDateString('en-us')}
+          Published {moment(releaseDate).format('MMMM DD, YYYY')}
         </h3>
       {/if}
       <div class="description">

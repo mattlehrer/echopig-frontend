@@ -1,5 +1,6 @@
 <script>
   // create a new query to lookup number of posts ref-ing this episode _id
+  import moment from 'moment';
   import { slide } from 'svelte/transition';
   import { post, parseErrors } from '../../utils/post';
   import { errorMsgs, successMsgs } from '../../utils/stores';
@@ -91,7 +92,7 @@
             <span class="is-size-7 has-text-weight-medium">🐽 {relativeTime(updatedAt)}</span>
             {#if episode.releaseDate}
               <span class="is-size-7 has-text-weight-light">
-                • Episode published {new Date(episode.releaseDate).toLocaleDateString('en-us')}
+                • Episode published {moment(episode.releaseDate).format('MMMM DD, YYYY')}
               </span>
             {/if}
           </div>

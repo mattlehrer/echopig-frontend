@@ -1,4 +1,5 @@
 <script>
+  import moment from 'moment';
   import { stores } from '@sapper/app';
   import PostInList from './_PostInList.svelte';
   
@@ -27,7 +28,7 @@
       {#if name}
         <h2 class="is-size-4">{name}</h2>
       {/if}
-      <h3>User since {new Date(createdAt).toLocaleDateString('en-us')}
+      <h3>User since {moment(createdAt).format('MMMM DD, YYYY')}
     </div>
   </div>
   

@@ -9,9 +9,6 @@
           episode: page.params.id,
         },
       });
-    const published = cache.data.episode.releaseDate ? new Date(cache.data.episode.releaseDate).toLocaleDateString('en-us', {
-          dateStyle: 'long',
-        }) : undefined;
     return {
       id: page.params.id,
       cache,

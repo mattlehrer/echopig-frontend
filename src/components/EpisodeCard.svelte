@@ -1,4 +1,5 @@
 <script>
+  import moment from 'moment';
   export let _id, title, image, podcast, releaseDate, posts;
 </script>
 
@@ -64,7 +65,7 @@
   <div class="epfooter">
     {#if releaseDate}
       <div class="releaseDate tag is-white">
-        {new Date(releaseDate).toDateString()}
+        {moment(releaseDate).format('MMMM DD, YYYY')}
       </div>
     {/if}
     {#if posts}

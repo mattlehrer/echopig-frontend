@@ -9,13 +9,6 @@
           iTunesId: parseInt(page.params.iTunesId.slice(1)),
         },
       });
-    cache.data.podcast.episodes = cache.data.podcast.episodes.map(e => {
-      e.published = e.releaseDate ? new Date(e.releaseDate).toLocaleDateString('en-us', {
-          dateStyle: 'long',
-        }) : undefined;
-      e.podcast = cache.data.podcast;
-      return e;
-    });
     return {
       iTunesId: parseInt(page.params.iTunesId.slice(1)),
       cache,

@@ -140,8 +140,10 @@ export const TOP_EPISODES_IN_GENRE = gql`
   query mostPostedEpisodesInGenreInTimeframe($genre: String!) {
     mostPostedEpisodesInGenreInTimeframe(genre: $genre) {
       _id
-      mp3URL
       title
+      description
+      posts
+      releaseDate
       podcast
     }
   }

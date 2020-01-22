@@ -25,7 +25,7 @@
   import { query, restore } from 'svelte-apollo';
   import { fade } from 'svelte/transition';
   import Spinner from '../../components/Spinner.svelte';
-  import EpisodeDetail from '../../components/EpisodeDetail.svelte';
+  import EpisodeDetail from './_EpisodeDetail.svelte';
 
   export let cache;
   export let id, title, published;

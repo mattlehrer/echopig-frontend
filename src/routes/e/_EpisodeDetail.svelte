@@ -11,6 +11,10 @@
     margin-bottom: 1em;
   }
 
+  .is-one-third img {
+    border-radius: .25rem;
+  }
+
   audio {
     width: 65%;
   }

@@ -43,8 +43,6 @@
   async function save(event) {
     inProgress = true;
     const response = await post(`/auth/save`, event.detail);
-    console.log('received response');
-    console.log(response);
     if (response.errors)
       errorMsgs.set([...$errorMsgs, JSON.stringify(response.errors)]);
     if (response.user) {

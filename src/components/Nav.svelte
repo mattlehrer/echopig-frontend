@@ -24,7 +24,7 @@
   }
 
   .navbar-item {
-    margin: 0 .25rem;
+    margin: 0 0.25rem;
   }
 
   .selected::after {
@@ -92,14 +92,20 @@
           <a class="navbar-item button is-success is-light" href="/post">
             Post an Episode
           </a>
-          <a class="navbar-item button is-white" href="/u/{$session.user.username}">Profile</a>
+          <a
+            class="navbar-item button is-white"
+            href="/u/{$session.user.username}">
+            Profile
+          </a>
           <a class="navbar-item button is-white" href="/settings">Settings</a>
           <a class="navbar-item button is-white" href="/logout">Logout</a>
         {:else}
           <a rel="prefetch" class="navbar-item button is-info" href="/register">
             <strong>Sign up</strong>
           </a>
-          <a rel="prefetch" class="navbar-item button is-light" href="/login">Log in</a>
+          <a rel="prefetch" class="navbar-item button is-light" href="/login">
+            Log in
+          </a>
         {/if}
       </div>
     </div>

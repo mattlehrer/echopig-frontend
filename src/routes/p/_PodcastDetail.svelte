@@ -7,11 +7,11 @@
 
 <style>
   h1 {
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
   }
 
   .is-one-third img {
-    border-radius: .25rem;
+    border-radius: 0.25rem;
   }
 
   /* .genre {
@@ -41,10 +41,10 @@
       </div>
     </div>
   </div>
-  
+
   {#each episodes as episode}
     <EpisodeInList {...episode} />
   {:else}
-    <div class="block"></div>
+    <div class="block" />
   {/each}
 </div>

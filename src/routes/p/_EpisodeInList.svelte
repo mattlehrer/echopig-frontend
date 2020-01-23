@@ -29,7 +29,9 @@
 <div class="columns">
   <div class="column is-10">
     <div class="list-border">
-      <h2 class="is-size-4"><a href='/e/{_id}'>{title}</a></h2>
+      <h2 class="is-size-4">
+        <a href="/e/{_id}">{title}</a>
+      </h2>
       {#if releaseDate}
         <h3 class="is-size-6 has-text-weight-light">
           Published {moment(releaseDate).format('MMMM DD, YYYY')}

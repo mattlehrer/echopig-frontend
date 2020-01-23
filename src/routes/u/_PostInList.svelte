@@ -17,14 +17,13 @@
     // console.log(node.attributes['data-post-id'].value);
     if (node.attributes['data-post-id']) {
       try {
-        const response = await post(`/post/delete`, { postId: node.attributes['data-post-id'].value });
+        const response = await post(`/post/delete`, {
+          postId: node.attributes['data-post-id'].value,
+        });
         if (response.graphQLErrors || response.networkError) {
           errorMsgs.set([...$errorMsgs, parseErrors(response)]);
         } else {
-          successMsgs.set([
-            ...$successMsgs,
-            `'Removed post.`,
-          ]);
+          successMsgs.set([...$successMsgs, `'Removed post.`]);
           isEnabled = false;
         }
       } catch (e) {
@@ -36,7 +35,7 @@
 
 <style>
   h3 {
-    margin-bottom: .25em;
+    margin-bottom: 0.25em;
   }
 
   .logo {
@@ -44,7 +43,7 @@
   }
 
   .is-square img {
-    border-radius: .25rem;
+    border-radius: 0.25rem;
   }
 
   .list-border {
@@ -70,26 +69,34 @@
 </style>
 
 {#if isEnabled}
-  <article out:slide|local={{delay: 100, duration: 350 }} class="list-border">
+  <article out:slide|local={{ delay: 100, duration: 350 }} class="list-border">
     <div class="columns">
       <div class="column logo is-2">
         <figure class="image is-square">
           <a href="/e/{episode._id}">
-            <img src={episode.image ? episode.image : episode.podcast.artworkUrl600} alt="{episode.title} Logo" />
+            <img
+              src={episode.image ? episode.image : episode.podcast.artworkUrl600}
+              alt="{episode.title} Logo" />
           </a>
         </figure>
       </div>
 
       <div class="column is-8">
         <div class="post-meta">
-          <h4 class="is-size-6 has-text-weight-light"><a href='/p/{episode.podcast.iTunesID}'>{episode.podcast.title}</a></h4>
-          <h3 class="is-size-5"><a href='/e/{episode._id}'>{episode.title}</a></h3>
+          <h4 class="is-size-6 has-text-weight-light">
+            <a href="/p/{episode.podcast.iTunesID}">{episode.podcast.title}</a>
+          </h4>
+          <h3 class="is-size-5">
+            <a href="/e/{episode._id}">{episode.title}</a>
+          </h3>
           {#if comment}
             <!-- <img src={avatar} alt='comment by' /> -->
             <p>{comment}</p>
           {/if}
           <div class="post-footer">
-            <span class="is-size-7 has-text-weight-medium">🐽 {relativeTime(updatedAt)}</span>
+            <span class="is-size-7 has-text-weight-medium">
+              🐽 {relativeTime(updatedAt)}
+            </span>
             {#if episode.releaseDate}
               <span class="is-size-7 has-text-weight-light">
                 • Episode published {moment(episode.releaseDate).format('MMMM DD, YYYY')}
@@ -100,9 +107,12 @@
       </div>
       {#if isProfile}
         <div class="column delete-column">
-          <button on:click={del} data-post-id={_id} class="button is-small is-danger is-outlined">
+          <button
+            on:click={del}
+            data-post-id={_id}
+            class="button is-small is-danger is-outlined">
             <span class="icon">
-              <i class="fas fa-times"></i>
+              <i class="fas fa-times" />
             </span>
           </button>
         </div>

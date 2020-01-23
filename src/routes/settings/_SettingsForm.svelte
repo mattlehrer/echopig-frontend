@@ -44,14 +44,14 @@
     line-height: 1.5;
     padding-left: 2.5rem;
     padding-right: 2.5rem;
-    padding-bottom: calc(.5em - 1px);
-    padding-top: calc(.5em - 1px);
+    padding-bottom: calc(0.5em - 1px);
+    padding-top: calc(0.5em - 1px);
     position: relative;
     vertical-align: top;
   }
-  
+
   .vcard-icon {
-    color:#dbdbdb;
+    color: #dbdbdb;
     left: 0;
     width: 40px;
     height: 40px;
@@ -61,7 +61,7 @@
   }
 
   .has-icons-left:hover .vcard-icon {
-    color:#363636;;
+    color: #363636;
   }
 
   .avatar-columns {
@@ -72,7 +72,7 @@
   .avatar-input-column {
     flex-basis: auto;
   }
-  
+
   .unavatar-column {
     display: flex;
     flex-direction: row;
@@ -87,8 +87,8 @@
 
   .unavatar {
     display: inline-block;
-    border-radius: .25rem;
-    margin: 0 0 0 .5rem;
+    border-radius: 0.25rem;
+    margin: 0 0 0 0.5rem;
   }
 </style>
 
@@ -124,7 +124,9 @@
   </div>
 
   <div class="field">
-    <label class="label" for="email">Add Your Secret Email to Your Contacts</label>
+    <label class="label" for="email">
+      Add Your Secret Email to Your Contacts
+    </label>
     <a href="/vcard">
       <div class="vcard-link has-icons-left has-icons-right">
         <span class="vcard-icon icon is-small">
@@ -204,9 +206,14 @@
         <div out:fade|local class="column unavatar-column">
           <label class="checkbox unavatar-text">
             Use Unavatar?
-            <input on:click={useUnavatar} type="checkbox">
+            <input on:click={useUnavatar} type="checkbox" />
           </label>
-          <img src="https://unavatar.now.sh/{email}" alt="photo from unavatar" class="unavatar is-square" height="40px" width="40px" />
+          <img
+            src="https://unavatar.now.sh/{email}"
+            alt="photo from unavatar"
+            class="unavatar is-square"
+            height="40px"
+            width="40px" />
         </div>
       {/if}
     </div>

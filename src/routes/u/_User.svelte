@@ -2,7 +2,7 @@
   import moment from 'moment';
   import { stores } from '@sapper/app';
   import PostInList from './_PostInList.svelte';
-  
+
   const { session } = stores();
   export let username, avatar, name, createdAt, posts;
 
@@ -11,11 +11,11 @@
 
 <style>
   h1 {
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
   }
 
   .avatar {
-    border-radius: .5rem;
+    border-radius: 0.5rem;
     max-height: 196px;
     max-width: 196px;
   }
@@ -36,13 +36,15 @@
       {/if}
       <h3>User since {moment(createdAt).format('MMMM DD, YYYY')}</h3>
       <h3>{posts.length} total posts</h3>
-      <h3><a href='https://rss.echopig.com/{username}'>Subscribe to feed</a></h3>
+      <h3>
+        <a href="https://rss.echopig.com/{username}">Subscribe to feed</a>
+      </h3>
     </div>
   </div>
-  
+
   {#each posts as { __typename, ...post } (post._id)}
     <PostInList {...post} {avatar} {isProfile} />
   {:else}
-    <div class="block"></div>
+    <div class="block" />
   {/each}
 </div>

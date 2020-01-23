@@ -1,7 +1,7 @@
 import vCard from 'vcards-js';
 
 export function get(req, res, next) {
-  console.log('vcard')
+  console.log('vcard');
   if (req.session && req.session.user && req.session.user.postTag) {
     const postVCard = vCard();
 

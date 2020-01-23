@@ -3,13 +3,24 @@
 
   export let mp3URL;
 
-  let duration, seekable, seeking, played, ended, currentTime = 0, paused = true, playbackRate, volume;
+  let duration,
+    seekable,
+    seeking,
+    played,
+    ended,
+    currentTime = 0,
+    paused = true,
+    playbackRate,
+    volume;
 
   function formatTime(remainder) {
-    if (!remainder || typeof remainder !== 'number' || remainder < 0) return '-:--';
-    let hours = 0, minutes = 0, seconds = 0;
-    if (remainder > 60*60) {
-      hours = Math.floor(remainder / (60*60));
+    if (!remainder || typeof remainder !== 'number' || remainder < 0)
+      return '-:--';
+    let hours = 0,
+      minutes = 0,
+      seconds = 0;
+    if (remainder > 60 * 60) {
+      hours = Math.floor(remainder / (60 * 60));
       remainder -= hours * 60 * 60;
     }
     if (remainder > 60) {
@@ -39,11 +50,11 @@
   }
 
   function rewind() {
-    currentTime -= .25;
+    currentTime -= 0.25;
   }
 
   function fastforward() {
-    currentTime += .5;
+    currentTime += 0.5;
   }
 </script>
 
@@ -53,7 +64,7 @@
     flex-direction: row;
     justify-content: space-between;
     font-size: 1rem;
-    margin-bottom: -.5rem;
+    margin-bottom: -0.5rem;
   }
 
   .controls {
@@ -77,26 +88,33 @@
       bind:currentTime
       bind:paused
       bind:playbackRate
-      bind:volume
-    >
-      Your browser does not support the <code>audio</code> element.
+      bind:volume>
+      Your browser does not support the
+      <code>audio</code>
+      element.
     </audio>
     <div class="seek">
       <div class="times">
         <span>{formatTime(currentTime)}</span>
         <span>{formatTime(duration)}</span>
       </div>
-      <input class="slider is-fullwidth is-medium is-circle" step="1" min="0" max={duration} bind:value={currentTime} type="range">
+      <input
+        class="slider is-fullwidth is-medium is-circle"
+        step="1"
+        min="0"
+        max={duration}
+        bind:value={currentTime}
+        type="range" />
     </div>
     <div class="controls">
       <span on:click={rewind} class="icon is-large">
-        <i id="rewind" class="fas fa-backward"></i>
+        <i id="rewind" class="fas fa-backward" />
       </span>
       <span on:click={playPause} class="icon is-large">
-        <i id="play-pause" class="fas fa-play"></i>
+        <i id="play-pause" class="fas fa-play" />
       </span>
       <span on:click={fastforward} class="icon is-large">
-        <i id="forward" class="fas fa-forward"></i>
+        <i id="forward" class="fas fa-forward" />
       </span>
     </div>
   </div>

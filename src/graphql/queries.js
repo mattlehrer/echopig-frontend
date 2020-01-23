@@ -36,10 +36,10 @@ export const GET_USER = gql`
       name
       avatar
       posts {
-          _id
-          episode
-          comment
-          updatedAt
+        _id
+        episode
+        comment
+        updatedAt
       }
       createdAt
     }

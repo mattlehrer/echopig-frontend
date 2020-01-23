@@ -1,5 +1,5 @@
 // based on moment-twitter
-import moment from'moment';
+import moment from 'moment';
 
 const second = 1e3;
 const minute = 6e4;

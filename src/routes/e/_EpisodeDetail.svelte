@@ -13,7 +13,7 @@
   }
 
   .is-one-third img {
-    border-radius: .25rem;
+    border-radius: 0.25rem;
   }
 
   /* audio {
@@ -47,7 +47,9 @@
     </h2>
     <h1 class="is-size-3">{title}</h1>
     {#if releaseDate}
-      <h3 class="is-size-6 has-text-weight-light">{moment(releaseDate).format('MMMM DD, YYYY')}</h3>
+      <h3 class="is-size-6 has-text-weight-light">
+        {moment(releaseDate).format('MMMM DD, YYYY')}
+      </h3>
     {/if}
     <!-- <audio
       controls
@@ -69,4 +71,4 @@
 
 <div class="description">
   <p>{description}</p>
-</div>  
+</div>

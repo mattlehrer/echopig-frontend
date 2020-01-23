@@ -80,7 +80,6 @@
       ({ __typename, isVerified, ...user } = response.user);
       session.user = user;
       successMsgs.set([...$successMsgs, 'Facebook account linked.']);
-
     }
   }
 </script>
@@ -95,7 +94,7 @@
   <title>Settings - Echopig</title>
 </svelte:head>
 
-<svelte:window bind:scrollY={scrollY}/>
+<svelte:window bind:scrollY />
 
 <div class="content">
   <div class="columns">

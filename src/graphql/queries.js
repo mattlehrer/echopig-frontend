@@ -17,6 +17,7 @@ export const LOGIN = gql`
       user {
         username
         email
+        name
         avatar
         postTag
         saveTag
@@ -50,6 +51,7 @@ export const UPDATE_USER = gql`
     updateUser(fieldsToUpdate: $updateUserInput) {
       username
       email
+      name
       avatar
       postTag
       saveTag

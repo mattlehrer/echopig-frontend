@@ -49,12 +49,6 @@
   });
 </script>
 
-<style>
-  h2 {
-    padding-left: 0.75rem;
-  }
-</style>
-
 <svelte:head>
   <meta
     name="description"

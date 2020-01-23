@@ -13,13 +13,19 @@
   h1 {
     margin-bottom: .5rem;
   }
+
+  .avatar {
+    border-radius: .5rem;
+    max-height: 196px;
+    max-width: 196px;
+  }
 </style>
 
 <div class="wrapper">
   <div class="columns">
     <div class="column is-one-third">
       {#if avatar}
-        <img src={avatar} alt="{username} avatar" />
+        <img class="avatar" src={avatar} alt="{username} avatar" />
       {/if}
     </div>
 
@@ -28,7 +34,9 @@
       {#if name}
         <h2 class="is-size-4">{name}</h2>
       {/if}
-      <h3>User since {moment(createdAt).format('MMMM DD, YYYY')}
+      <h3>User since {moment(createdAt).format('MMMM DD, YYYY')}</h3>
+      <h3>{posts.length} total posts</h3>
+      <h3><a href='https://rss.echopig.com/{username}'>Subscribe to feed</a></h3>
     </div>
   </div>
   

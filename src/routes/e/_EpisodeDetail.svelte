@@ -1,9 +1,10 @@
 <script>
-  // import AudioPlayer from './AudioPlayer.svelte';
+  import moment from 'moment';
+  import AudioPlayer from '../../components/AudioPlayer.svelte';
 
   // create a new query to lookup number of posts ref-ing this episode _id
 
-  export let title, image, podcast, published, description, mp3URL;
+  export let title, image, podcast, releaseDate, description, mp3URL;
 </script>
 
 <style>
@@ -15,9 +16,9 @@
     border-radius: .25rem;
   }
 
-  audio {
+  /* audio {
     width: 65%;
-  }
+  } */
 
   /* .post-count {
     align-self: flex-end;
@@ -33,6 +34,7 @@
 <div class="columns">
   <div class="column is-one-third">
     <img src={image ? image : podcast.artworkUrl600} alt="{title} Logo" />
+    <AudioPlayer {mp3URL} />
   </div>
 
   <div class="column metadata">
@@ -44,21 +46,16 @@
       </a>
     </h2>
     <h1 class="is-size-3">{title}</h1>
-    {#if published}
-      <h3 class="is-size-6 has-text-weight-light">{published}</h3>
+    {#if releaseDate}
+      <h3 class="is-size-6 has-text-weight-light">{moment(releaseDate).format('MMMM DD, YYYY')}</h3>
     {/if}
-    <audio
+    <!-- <audio
       controls
       src={mp3URL} type="audio/mpeg">
         Your browser does not support the
         <code>audio</code> element.
-    </audio>
-    <!-- <AudioPlayer {mp3URL} /> -->
-    <div class="description">
-      <p>{description}</p>
-    </div>
+    </audio> -->
   </div>
-
   <div class="epfooter">
 
     <!-- {#if posts}
@@ -69,3 +66,7 @@
     {/if} -->
   </div>
 </div>
+
+<div class="description">
+  <p>{description}</p>
+</div>  

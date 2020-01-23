@@ -23,6 +23,10 @@
     margin-top: -10px;
   }
 
+  .navbar-item {
+    margin: 0 .25rem;
+  }
+
   .selected::after {
     position: absolute;
     content: '';

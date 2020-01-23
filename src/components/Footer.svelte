@@ -10,7 +10,9 @@
   }
 
   #copyright {
-    padding-left: 1rem;
+    /* padding-left: 1rem; */
+    margin: 0 1rem;
+    display: inline-block;
   }
   .footer {
     height: 144px;

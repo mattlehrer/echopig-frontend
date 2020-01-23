@@ -13,7 +13,6 @@
       id: page.params.id,
       cache,
       title: `${cache.data.episode.podcast.title} - ${cache.data.episode.title}`,
-      published,
     };
   }
 </script>
@@ -25,7 +24,7 @@
   import EpisodeDetail from './_EpisodeDetail.svelte';
 
   export let cache;
-  export let id, title, published;
+  export let id, title;
 
   restore(client, GET_EPISODE, cache.data);
 
@@ -50,7 +49,7 @@
     <Spinner />
   {:then result}
     <div in:fade|local class="episode-detail">
-      <EpisodeDetail {...result.data.episode} {published} />
+      <EpisodeDetail {...result.data.episode} />
     </div>
   {:catch error}
     <p style="color: red">{error.message}</p>

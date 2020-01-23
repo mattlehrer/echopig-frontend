@@ -10,7 +10,7 @@
 </script>
 
 <style>
-  h1 {
+  h1, h2 {
     margin-bottom: 0.5rem;
   }
 
@@ -35,7 +35,7 @@
         <h2 class="is-size-4">{name}</h2>
       {/if}
       <h3>User since {moment(createdAt).format('MMMM DD, YYYY')}</h3>
-      <h3>{posts.length} total posts</h3>
+      <h3>{posts.length} posts</h3>
       <h3>
         <a href="https://rss.echopig.com/{username}">Subscribe to feed</a>
       </h3>

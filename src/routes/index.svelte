@@ -49,6 +49,16 @@
   });
 </script>
 
+<style>
+  h2 {
+    margin-left: 0.75rem;
+  }
+
+  .block {
+    margin-top: 1rem;
+  }
+</style> 
+
 <svelte:head>
   <meta
     name="description"

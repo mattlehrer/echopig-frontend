@@ -6,7 +6,7 @@
 </script>
 
 <style>
-  h1 {
+  h1, h2 {
     margin-bottom: 0.5rem;
   }
 

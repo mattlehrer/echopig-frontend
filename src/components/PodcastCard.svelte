@@ -13,6 +13,8 @@
 
   .card-image {
     width: 100%;
+    border-radius: 0.25rem;
+    overflow: hidden;
   }
 
   .card-content {

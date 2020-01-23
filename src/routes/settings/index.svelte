@@ -3,7 +3,6 @@
 
   export async function preload(page, session) {
     const { user } = session;
-    const { isVerified } = user;
 
     if (!user) {
       session.messages = addMsg(
@@ -13,6 +12,8 @@
       );
       return this.redirect(302, 'login');
     }
+
+    const { isVerified } = user;
     return { user, isVerified };
   }
 </script>
@@ -20,11 +21,12 @@
 <script>
   import { stores } from '@sapper/app';
   import { FacebookAuth } from '@beyonk/svelte-social-auth';
+  import * as animateScroll from 'svelte-scrollto';
   import SettingsForm from './_SettingsForm.svelte';
   import ResendEmailConfirmForm from './_ResendEmailConfirmForm.svelte';
   import { post } from '../../utils/post';
   import { errorMsgs, successMsgs } from '../../utils/stores';
-  let inProgress;
+  let inProgress, scrollY;
 
   const { session } = stores();
   let __typename, isVerified, user;
@@ -42,13 +44,22 @@
 
   async function save(event) {
     inProgress = true;
+    if (event.detail.email === user.email) delete event.detail.email;
+    if (event.detail.avatar === user.avatar) delete event.detail.avatar;
+    if (event.detail.name === user.name) delete event.detail.name;
+    if (Object.keys(event.detail).length === 0) {
+      inProgress = false;
+      return;
+    }
+
+    animateScroll.scrollToTop();
     const response = await post(`/auth/save`, event.detail);
     if (response.errors)
       errorMsgs.set([...$errorMsgs, JSON.stringify(response.errors)]);
     if (response.user) {
       ({ __typename, isVerified, ...user } = response.user);
       session.user = user;
-      successMsgs.set([...$successMsgs, 'Settings saved.']);
+      successMsgs.set([...$successMsgs, `Settings updated.`]);
     }
     inProgress = false;
   }
@@ -68,7 +79,8 @@
     if (response.user) {
       ({ __typename, isVerified, ...user } = response.user);
       session.user = user;
-      successMsgs.set([...$successMsgs, 'Settings saved.']);
+      successMsgs.set([...$successMsgs, 'Facebook account linked.']);
+
     }
   }
 </script>
@@ -82,6 +94,8 @@
 <svelte:head>
   <title>Settings - Echopig</title>
 </svelte:head>
+
+<svelte:window bind:scrollY={scrollY}/>
 
 <div class="content">
   <div class="columns">

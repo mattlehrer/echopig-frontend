@@ -41,7 +41,7 @@
     <h2 class="is-size-4">
       <a
         rel="prefetch"
-        href={'/p/' + podcast.iTunesID ? 'i' + podcast.iTunesID : podcast._id}>
+        href={'/p/' + (podcast.iTunesID ? 'i' + podcast.iTunesID : podcast._id)}>
         {podcast.title}
       </a>
     </h2>

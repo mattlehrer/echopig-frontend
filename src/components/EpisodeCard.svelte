@@ -57,7 +57,7 @@
         <p class="subtitle is-6">
           <a
             rel="prefetch"
-            href={'/p/' + podcast.iTunesID ? 'i' + podcast.iTunesID : podcast._id}>
+            href={'/p/' + (podcast.iTunesID ? 'i' + podcast.iTunesID : podcast._id)}>
             {podcast.title}
           </a>
         </p>

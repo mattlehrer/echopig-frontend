@@ -1,5 +1,5 @@
 <script>
-  import 'bulma-slider/dist/css/bulma-slider.min.css';
+  // import 'bulma-slider/src/css/bulma-slider.min.css';
 
   export let mp3URL;
 
@@ -106,7 +106,7 @@
         bind:value={currentTime}
         type="range" />
     </div>
-    <div class="controls">
+    <div class="controls has-text-primary">
       <span on:click={rewind} class="icon is-large">
         <i id="rewind" class="fas fa-backward" />
       </span>

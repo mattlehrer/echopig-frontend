@@ -1,4 +1,41 @@
 @charset "utf-8";
+
+// Set your brand colors
+$pink-darkest: #B61515;
+$pink-darker: #E13030;
+$pink: #F75656;
+$pink-lighter: #FF7C7C;
+$pink-lightest: #FFA7A7;
+
+$orange-darkest: #B65E15;
+$orange-darker: #E18030;
+$orange: #F79F56;
+$orange-lighter: #FFB77C;
+$orange-lightest: #FFCFA7;
+
+$green-darkest: #119111;
+$green-darker: #26B426;
+$green: #45C645;
+$green-lighter: #69D869;
+$green-lightest: #98E998;
+
+$blue-darkest: #0C6D6D;
+$blue-darker: #1D8787;
+$blue: #349494;
+$blue-lighter: #56B1B1;
+$blue-lightest: #8AD3D3;
+
+// Update Bulma's global variables
+$primary: $blue-lighter;
+$info: $pink;
+$success: $orange;
+$danger: $pink-darkest;
+// $family-sans-serif: "Nunito", sans-serif;
+// $link: $pink;
+
+// $slider-track-background: $blue-lightest;
+$slider-thumb-background: $primary;
+
 // @import "../node_modules/bulma/bulma.sass";
 @import "../node_modules/bulma/sass/utilities/_all.sass";
 @import "../node_modules/bulma/sass/base/_all.sass";
@@ -20,21 +57,7 @@
 @import "../node_modules/bulma/sass/layout/section.sass";
 @import "../node_modules/bulma/sass/layout/footer.sass";
 
-// Set your brand colors
-// $purple: #8A4D76;
-// $pink: #FA7C91;
-// $brown: #757763;
-// $beige-light: #D0D1CD;
-// $beige-lighter: #EFF0EB;
-
-// Update Bulma's global variables
-// $family-sans-serif: "Nunito", sans-serif;
-// $grey-dark: $brown;
-// $grey-light: $beige-light;
-// $primary: $purple;
-// $link: $pink;
-// $widescreen-enabled: false;
-// $fullhd-enabled: false;
+@import "../node_modules/bulma-slider/src/sass/index.sass";
 
 html,
 body,
@@ -58,7 +81,8 @@ h4,
 h5,
 h6 {
 	font-weight: 400;
-	line-height: 1.2;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
 }
 
 h1 {

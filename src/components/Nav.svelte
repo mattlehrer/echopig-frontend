@@ -89,7 +89,7 @@
 
       <div class="navbar-end">
         {#if $session.user}
-          <a class="navbar-item button is-success is-light" href="/post">
+          <a class="navbar-item button is-primary is-light" href="/post">
             Post an Episode
           </a>
           <a
@@ -100,7 +100,7 @@
           <a class="navbar-item button is-white" href="/settings">Settings</a>
           <a class="navbar-item button is-white" href="/logout">Logout</a>
         {:else}
-          <a rel="prefetch" class="navbar-item button is-info" href="/register">
+          <a rel="prefetch" class="navbar-item button is-info has-text-white" href="/register">
             <strong>Sign up</strong>
           </a>
           <a rel="prefetch" class="navbar-item button is-light" href="/login">

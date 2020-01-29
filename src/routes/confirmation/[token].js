@@ -10,7 +10,7 @@ export async function get(req, res, next) {
         mutation: CONFIRM_EMAIL, 
         variables: { 
           token: req.params.token,
-          },
+        },
       });
       console.log(response);
       if (!response.errors) {
@@ -23,9 +23,8 @@ export async function get(req, res, next) {
       }
     }
     catch (e) {
-      res.json(e);
+      return res.json(e);
     }
-		next();
 	} else {
 		next();
 	}

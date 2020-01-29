@@ -1,29 +1,29 @@
 @charset "utf-8";
 
 // Set your brand colors
-$pink-darkest: #B61515;
-$pink-darker: #E13030;
-$pink: #F75656;
-$pink-lighter: #FF7C7C;
-$pink-lightest: #FFA7A7;
+$pink-darkest: hsl(0, 79%, 40%);
+$pink-darker: hsl(0, 75%, 54%);
+$pink: hsl(0, 91%, 65%);
+$pink-lighter: hsl(0, 100%, 74%);
+$pink-lightest: hsl(0, 100%, 83%);
 
-$orange-darkest: #B65E15;
-$orange-darker: #E18030;
-$orange: #F79F56;
-$orange-lighter: #FFB77C;
-$orange-lightest: #FFCFA7;
+$orange-darkest: hsl(27, 79%, 40%);
+$orange-darker: hsl(27, 75%, 54%);
+$orange: hsl(27, 91%, 65%);
+$orange-lighter: hsl(27, 100%, 74%);
+$orange-lightest: hsl(27, 100%, 83%);
 
-$green-darkest: #119111;
-$green-darker: #26B426;
-$green: #45C645;
-$green-lighter: #69D869;
-$green-lightest: #98E998;
+$green-darkest: hsl(120, 79%, 32%);
+$green-darker: hsl(120, 65%, 43%);
+$green: hsl(120, 53%, 52%);
+$green-lighter: hsl(120, 59%, 63%);
+$green-lightest: hsl(120, 65%, 75%);
 
-$blue-darkest: #0C6D6D;
-$blue-darker: #1D8787;
-$blue: #349494;
-$blue-lighter: #56B1B1;
-$blue-lightest: #8AD3D3;
+$blue-darkest: hsl(180, 80%, 24%);
+$blue-darker: hsl(180, 65%, 32%);
+$blue: hsl(180, 48%, 39%);
+$blue-lighter: hsl(180, 37%, 52%);
+$blue-lightest: hsl(180, 45%, 68%);
 
 // Update Bulma's global variables
 $primary: $blue-lighter;
@@ -49,6 +49,7 @@ $slider-thumb-background: $primary;
 @import "../node_modules/bulma/sass/elements/icon.sass";
 @import "../node_modules/bulma/sass/elements/image.sass";
 @import "../node_modules/bulma/sass/elements/notification.sass";
+@import "../node_modules/bulma/sass/elements/other.sass";
 @import "../node_modules/bulma/sass/elements/progress.sass";
 @import "../node_modules/bulma/sass/elements/tag.sass";
 @import "../node_modules/bulma/sass/elements/title.sass";

@@ -50,14 +50,16 @@
 </script>
 
 <style>
-  h2 {
+  h1,
+  h2,
+  h3 {
     margin-left: 0.75rem;
   }
 
   .block {
     margin-top: 1rem;
   }
-</style> 
+</style>
 
 <svelte:head>
   <meta
@@ -74,10 +76,10 @@
         <h2 class="is-size-3">
           The best way to share your favorite podcast episodes.
         </h2>
-        <div class="is-size-5">
+        <h3 class="is-size-5">
           You don't need a new app, you just need a better way to find and share
           the best episodes.
-        </div>
+        </h3>
       </div>
       <div class="column" />
       <div id="sign-up-column" class="column is-two-fifths">

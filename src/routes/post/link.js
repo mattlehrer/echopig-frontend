@@ -20,6 +20,9 @@ export async function post(req, res, next) {
       return res.json(e);
     }
   } else {
-    next();
+    console.error('no session or token');
+    console.error(req.session.token);
+    // req.session.destroy();
+    res.redirect('/login');
   }
 }

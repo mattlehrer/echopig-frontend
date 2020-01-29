@@ -1,7 +1,17 @@
+<script context="module">
+  export async function preload(page, session) {
+    const { user } = session;
+
+    if (!user) {
+      return this.redirect(302, '/login');
+    }
+  }
+</script>
+
 <script>
   import { stores, goto } from '@sapper/app';
   import { post, parseErrors } from '../../utils/post';
-  import { errorMsgs, successMsgs } from '../../utils/stores';
+  import { successMsgs } from '../../utils/stores';
 
   const { session } = stores();
 

@@ -7,5 +7,5 @@
 </style>
 
 <div class="block">
-  <progress class="progress is-large is-primary" max="100"></progress>
+  <progress class="progress is-large is-primary" max="100" />
 </div>

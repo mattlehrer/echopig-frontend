@@ -10,6 +10,11 @@
     this.classList.toggle('is-active');
     $target.classList.toggle('is-active');
   }
+
+  function logout() {
+    delete session.user;
+    session.set({});
+  }
 </script>
 
 <style>
@@ -98,9 +103,17 @@
             Profile
           </a>
           <a class="navbar-item button is-white" href="/settings">Settings</a>
-          <a class="navbar-item button is-white" href="/logout">Logout</a>
+          <a
+            on:click={logout}
+            class="navbar-item button is-white"
+            href="/logout">
+            Logout
+          </a>
         {:else}
-          <a rel="prefetch" class="navbar-item button is-info has-text-white" href="/register">
+          <a
+            rel="prefetch"
+            class="navbar-item button is-info has-text-white"
+            href="/register">
             <strong>Sign up</strong>
           </a>
           <a rel="prefetch" class="navbar-item button is-light" href="/login">

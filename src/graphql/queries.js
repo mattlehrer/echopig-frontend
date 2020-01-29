@@ -77,6 +77,60 @@ export const CREATE_USER = gql`
   }
 `;
 
+export const FB_LOGIN = gql`
+  mutation fbLogin($fbIdAndToken: FbLoginInput!) {
+    fbLogin(fbIdAndToken: $fbIdAndToken) {
+      user {
+        username
+        email
+        avatar
+        postTag
+        saveTag
+        isVerified
+        facebook
+        twitter
+      }
+      token
+    }
+  }
+`;
+
+export const TWITTER_LOGIN = gql`
+  mutation twitterLogin($twitterTokens: TwitterTokens!) {
+    twitterLogin(twitterTokens: $twitterTokens) {
+      user {
+        username
+        email
+        avatar
+        postTag
+        saveTag
+        isVerified
+        facebook
+        twitter
+      }
+      token
+    }
+  }
+`;
+
+export const CREATE_SOCIAL_USER = gql`
+  mutation CreateSocialUser($createSocialUserInput: CreateSocialUserInput!) {
+    createSocialUser(createSocialUserInput: $createSocialUserInput) {
+      user {
+        username
+        email
+        avatar
+        postTag
+        saveTag
+        isVerified
+        facebook
+        twitter
+      }
+      token
+    }
+  }
+`;
+
 export const CREATE_POST = gql`
   mutation CreatePost($createPostInput: CreatePostInput!) {
     createPost(createPostInput: $createPostInput) {

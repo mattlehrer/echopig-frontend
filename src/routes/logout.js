@@ -1,4 +1,6 @@
 export function get(req, res) {
-  delete req.session.user;
+  req.session.destroy(err => {
+    if (err) console.error(err);
+  });
   res.redirect('/');
 }

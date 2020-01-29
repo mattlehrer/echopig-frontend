@@ -20,7 +20,7 @@
 
 <script>
   import { stores } from '@sapper/app';
-  import { FacebookAuth } from '@beyonk/svelte-social-auth';
+  import FacebookAuth from '../../components/FacebookAuth.svelte';
   import * as animateScroll from 'svelte-scrollto';
   import SettingsForm from './_SettingsForm.svelte';
   import ResendEmailConfirmForm from './_ResendEmailConfirmForm.svelte';
@@ -66,6 +66,9 @@
 
   async function fbAuthSuccess({ detail }) {
     console.log(detail);
+
+    // @TODO: confirm that userId is not associated with a different username
+
     const { userId, ...token } = detail;
     const response = await post(`/auth/save`, {
       facebook: userId,
@@ -88,13 +91,15 @@
   .content {
     padding: 0 0.75rem;
   }
+
+  .facebook {
+    margin-bottom: 1rem;
+  }
 </style>
 
 <svelte:head>
   <title>Settings - Echopig</title>
 </svelte:head>
-
-<svelte:window bind:scrollY />
 
 <div class="content">
   <div class="columns">
@@ -112,12 +117,15 @@
         <h1 class="is-size-3">Your Settings</h1>
 
         {#if !user.facebook}
-          <div class="block">
+          <div class="facebook">
             <FacebookAuth
               text="Link your Facebook account"
               appId="process.env.FB_APP_ID"
               on:init-error={ev => console.error(ev.detail.error.message)}
-              on:auth-failure={ev => ($session.messages = addMsg('error', 'Authentication failure', $session.messages))}
+              on:auth-failure={ev => errorMsgs.set([
+                  ...$errorMsgs,
+                  ev.detail.error.message,
+                ])}
               on:auth-success={fbAuthSuccess} />
           </div>
         {/if}

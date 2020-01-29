@@ -1,3 +1,13 @@
+<script context="module">
+  export async function preload(page, session) {
+    const { user } = session;
+
+    if (user) {
+      return this.redirect(302, '/');
+    }
+  }
+</script>
+
 <script>
   import Register from '../components/Register.svelte';
 </script>

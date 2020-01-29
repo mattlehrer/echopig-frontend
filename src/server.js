@@ -115,6 +115,7 @@ app.use(
     session: req => ({
       user: req.session && req.session.user,
       messages: req.session && req.session.messages,
+      registration: req.session && req.session.registration,
     }),
   }),
 );
